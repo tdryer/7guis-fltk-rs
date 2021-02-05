@@ -4,7 +4,7 @@ const WIDGET_HEIGHT: i32 = 25;
 const WIDGET_PADDING: i32 = 10;
 const WIDGET_WIDTH: i32 = 70;
 
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 enum Message {
     CelsiusChanged,
     FahrenheitChanged,
@@ -25,7 +25,7 @@ fn main() {
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .with_pos(WIDGET_PADDING, WIDGET_PADDING);
     celsius_input.set_trigger(CallbackTrigger::Changed);
-    celsius_input.emit(sender.clone(), Message::CelsiusChanged);
+    celsius_input.emit(sender, Message::CelsiusChanged);
 
     let celsius_frame = Frame::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
@@ -36,7 +36,7 @@ fn main() {
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .right_of(&celsius_frame, WIDGET_PADDING);
     fahrenheit_input.set_trigger(CallbackTrigger::Changed);
-    fahrenheit_input.emit(sender.clone(), Message::FahrenheitChanged);
+    fahrenheit_input.emit(sender, Message::FahrenheitChanged);
 
     let _fahrenheit_frame = Frame::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
@@ -48,7 +48,7 @@ fn main() {
     while app.wait() {
         match reciever.recv() {
             Some(Message::CelsiusChanged) => {
-                if let Some(celsius) = celsius_input.value().parse::<i32>().ok() {
+                if let Ok(celsius) = celsius_input.value().parse::<i32>() {
                     let value = f64::from(celsius) * (9.0 / 5.0) + 32.0;
                     fahrenheit_input.set_value(&format!("{}", value.round()))
                 } else {
@@ -56,7 +56,7 @@ fn main() {
                 }
             }
             Some(Message::FahrenheitChanged) => {
-                if let Some(fahrenheit) = fahrenheit_input.value().parse::<i32>().ok() {
+                if let Ok(fahrenheit) = fahrenheit_input.value().parse::<i32>() {
                     let value = (f64::from(fahrenheit) - 32.0) * (5.0 / 9.0);
                     celsius_input.set_value(&format!("{}", value.round()))
                 } else {
