@@ -11,7 +11,7 @@ enum Message {
 }
 
 fn main() {
-    let app = App::default();
+    let app = App::default().with_scheme(Scheme::Gtk);
     let mut wind = Window::default()
         .with_size(
             WIDGET_WIDTH * 4 + WIDGET_PADDING * 5,
@@ -44,8 +44,7 @@ fn main() {
         .with_label("Fahrenheit");
 
     wind.end();
-    wind.show_with_args(&["-scheme", "gtk+"]);
-
+    wind.show();
     while app.wait() {
         match reciever.recv() {
             Some(Message::CelsiusChanged) => {

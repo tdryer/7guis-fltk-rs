@@ -5,7 +5,7 @@ const WIDGET_PADDING: i32 = 10;
 const WIDGET_WIDTH: i32 = 70;
 
 fn main() {
-    let app = App::default();
+    let app = App::default().with_scheme(Scheme::Gtk);
     let mut wind = Window::default()
         .with_size(
             WIDGET_WIDTH * 2 + 3 * WIDGET_PADDING,
@@ -29,7 +29,6 @@ fn main() {
     });
 
     wind.end();
-    wind.show_with_args(&["-scheme", "gtk+"]);
-
+    wind.show();
     app.run().unwrap();
 }
