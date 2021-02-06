@@ -113,7 +113,6 @@ fn get_date(input: &mut Input) -> Result<NaiveDate, chrono::ParseError> {
         Ok(_) => Color::BackGround2,
         Err(_) => Color::Red,
     });
-    // TODO: Make widget redraw properly when colour changes
-    input.set_damage(true);
+    input.redraw();
     date
 }
