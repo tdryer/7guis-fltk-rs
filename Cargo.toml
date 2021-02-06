@@ -14,5 +14,10 @@ path = "src/counter.rs"
 name = "temperature"
 path = "src/temperature.rs"
 
+[[bin]]
+name = "flightbooker"
+path = "src/flightbooker.rs"
+
 [dependencies]
 fltk = "0.14.1"
+chrono = "0.4"
