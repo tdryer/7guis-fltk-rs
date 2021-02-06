@@ -65,16 +65,15 @@ fn main() {
     wind.show();
     while app.wait() {
         match reciever.recv() {
-            Some(Message::Update) => match choice.value().unwrap().as_str() {
-                FLIGHT_ONE_WAY => {
+            Some(Message::Update) => {
+                if choice.value().unwrap().as_str() == FLIGHT_ONE_WAY {
                     return_input.deactivate();
                     if get_date(&mut start_input).is_ok() {
                         book_button.activate();
                     } else {
                         book_button.deactivate();
                     }
-                }
-                FLIGHT_RETURN => {
+                } else {
                     return_input.activate();
                     let start_date = get_date(&mut start_input);
                     let return_date = get_date(&mut return_input);
@@ -87,26 +86,21 @@ fn main() {
                         book_button.deactivate();
                     }
                 }
-                _ => {}
-            },
+            }
             Some(Message::Book) => {
                 // TODO: Should it be impossible for InputChoice::value to return None?
-                match choice.value().unwrap().as_str() {
-                    FLIGHT_ONE_WAY => {
-                        alert_default(&format!(
-                            "You have booked a one-way flight for {}.",
-                            start_input.value()
-                        ));
-                    }
-                    FLIGHT_RETURN => {
-                        alert_default(&format!(
-                            "You have booked a return flight from {} to {}",
-                            start_input.value(),
-                            return_input.value()
-                        ));
-                    }
-                    _ => {}
-                }
+                alert_default(&if choice.value().unwrap().as_str() == FLIGHT_ONE_WAY {
+                    format!(
+                        "You have booked a one-way flight for {}.",
+                        start_input.value()
+                    )
+                } else {
+                    format!(
+                        "You have booked a return flight from {} to {}",
+                        start_input.value(),
+                        return_input.value()
+                    )
+                })
             }
             None => {}
         }
