@@ -39,7 +39,6 @@ fn main() {
 
     let mut start_input = Input::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
-        .with_pos(WIDGET_PADDING, WIDGET_PADDING)
         .below_of(&choice, WIDGET_PADDING);
     start_input.set_trigger(CallbackTrigger::Changed);
     start_input.emit(sender, Message::Update);
@@ -47,7 +46,6 @@ fn main() {
 
     let mut return_input = Input::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
-        .with_pos(WIDGET_PADDING, WIDGET_PADDING)
         .below_of(&start_input, WIDGET_PADDING);
     return_input.deactivate();
     return_input.set_trigger(CallbackTrigger::Changed);
@@ -56,7 +54,6 @@ fn main() {
 
     let mut book_button = Button::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
-        .with_pos(WIDGET_PADDING, WIDGET_PADDING)
         .below_of(&return_input, WIDGET_PADDING)
         .with_label("Book");
     book_button.emit(sender, Message::Book);
