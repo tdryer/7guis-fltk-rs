@@ -31,8 +31,8 @@ fn main() {
     choice.add(FLIGHT_ONE_WAY);
     choice.add(FLIGHT_RETURN);
     choice.set_value2(0);
-    // TODO: Make input read-only. Add missing InputChoice::input?
-    //choice.input().set_readonly(true);
+    choice.input().set_readonly(true);
+    choice.input().set_color(Color::BackGround);
     choice.emit(sender, Message::Update);
 
     let current_date = Local::now().naive_local().date();

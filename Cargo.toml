@@ -19,5 +19,7 @@ name = "flightbooker"
 path = "src/flightbooker.rs"
 
 [dependencies]
-fltk = "0.14.1"
+# TODO: Wait for 0.14.2 release
+# fltk = "0.14.1"
+fltk = { path = "../fltk-rs/fltk" }
 chrono = "0.4"
