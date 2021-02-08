@@ -28,9 +28,6 @@ fn main() {
 
     let (sender, reciever) = channel::<Message>();
 
-    // TODO: Store in the progress widget?
-    let mut num_ticks: f64 = 0.0;
-
     thread::spawn(move || loop {
         thread::sleep(Duration::from_millis(100));
         sender.send(Message::Tick);
@@ -44,7 +41,6 @@ fn main() {
     elapsed_progress.set_selection_color(Color::Blue);
     elapsed_progress.set_maximum(DURATION_DEFAULT);
 
-    // TODO: Merge with progress bar?
     let mut elapsed_frame = Frame::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .below_of(&elapsed_progress, WIDGET_PADDING)
@@ -71,16 +67,16 @@ fn main() {
     while app.wait() {
         match reciever.recv() {
             Some(Message::Reset) => {
-                num_ticks = 0.0;
+                elapsed_progress.set_value(0.0);
             }
             Some(Message::ChangeDuration) => {
                 elapsed_progress.set_maximum(duration_slider.value());
             }
             Some(Message::Tick) => {
-                if duration_slider.value() - num_ticks >= 0.1 {
-                    num_ticks += 0.1;
-                    elapsed_progress.set_value(num_ticks);
-                    elapsed_frame.set_label(&format!("{:.1}s", num_ticks));
+                if duration_slider.value() - elapsed_progress.value() >= 0.01 {
+                    elapsed_progress.set_value(elapsed_progress.value() + 0.1);
+                    elapsed_frame.set_label(&format!("{:.1}s", elapsed_progress.value()));
+                    eprintln!("{}", elapsed_progress.value());
                 }
             }
             None => {}
