@@ -18,6 +18,10 @@ path = "src/temperature.rs"
 name = "flightbooker"
 path = "src/flightbooker.rs"
 
+[[bin]]
+name = "timer"
+path = "src/timer.rs"
+
 [dependencies]
 # TODO: Wait for 0.14.2 release
 # fltk = "0.14.1"
