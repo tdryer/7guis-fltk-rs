@@ -77,7 +77,7 @@ fn main() {
                 elapsed_progress.set_maximum(duration_slider.value());
             }
             Some(Message::Tick) => {
-                if duration_slider.value() > num_ticks {
+                if duration_slider.value() - num_ticks >= 0.1 {
                     num_ticks += 0.1;
                     elapsed_progress.set_value(num_ticks);
                     elapsed_frame.set_label(&format!("{:.1}s", num_ticks));
