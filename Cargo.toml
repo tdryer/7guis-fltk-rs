@@ -23,7 +23,5 @@ name = "timer"
 path = "src/timer.rs"
 
 [dependencies]
-# TODO: Wait for 0.14.2 release
-# fltk = "0.14.1"
-fltk = { path = "../fltk-rs/fltk" }
+fltk = "0.14.3"
 chrono = "0.4"
