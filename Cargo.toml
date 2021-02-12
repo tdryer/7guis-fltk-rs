@@ -22,6 +22,10 @@ path = "src/flightbooker.rs"
 name = "timer"
 path = "src/timer.rs"
 
+[[bin]]
+name = "crud"
+path = "src/crud.rs"
+
 [dependencies]
-fltk = "0.14.3"
+fltk = "0.14.7"
 chrono = "0.4"
