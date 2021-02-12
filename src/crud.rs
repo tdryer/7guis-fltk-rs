@@ -1,4 +1,4 @@
-use fltk::{app::*, browser::*, button::*, group::*, input::*, window::*};
+use fltk::{app::*, browser::*, button::*, input::*, window::*};
 
 const WIDGET_WIDTH: i32 = 70;
 const WIDGET_HEIGHT: i32 = 25;
@@ -47,34 +47,28 @@ fn main() {
         .below_of(&name_input, WIDGET_PADDING)
         .with_label("Surname:");
 
-    // TODO: no reason to use pack here?
-    let mut pack = Pack::default()
-        .with_size(WIDGET_WIDTH * 3, WIDGET_HEIGHT)
+    let mut create_button = Button::default()
+        .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .with_pos(
             WIDGET_PADDING,
             list_browser.y() + list_browser.height() + WIDGET_PADDING,
-        );
-    pack.set_type(PackType::Horizontal);
-    pack.set_spacing(WIDGET_PADDING);
-
-    let mut create_button = Button::default()
-        .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
+        )
         .with_label("Create");
     create_button.emit(sender, Message::Create);
 
     let mut update_button = Button::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
+        .right_of(&create_button, WIDGET_PADDING)
         .with_label("Update");
     update_button.emit(sender, Message::Update);
     update_button.deactivate();
 
     let mut delete_button = Button::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
+        .right_of(&update_button, WIDGET_PADDING)
         .with_label("Delete");
     delete_button.emit(sender, Message::Delete);
     delete_button.deactivate();
-
-    pack.end();
 
     let mut model = vec![
         "Babbage, Charles".to_string(),
@@ -87,7 +81,7 @@ fn main() {
 
     wind.set_size(
         name_input.x() + name_input.width() + WIDGET_PADDING,
-        pack.y() + pack.height() + WIDGET_PADDING,
+        create_button.y() + create_button.height() + WIDGET_PADDING,
     );
     wind.end();
     wind.show();
@@ -104,7 +98,6 @@ fn main() {
                 sender.send(Message::Filter);
             }
             Some(Message::Delete) => {
-                // TODO: duplicated code
                 let selected_name = list_browser.text(list_browser.value()).unwrap();
                 let index = model.iter().position(|s| s == &selected_name).unwrap();
                 model.remove(index);
