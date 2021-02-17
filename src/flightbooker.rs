@@ -1,12 +1,9 @@
 use chrono::{offset::Local, NaiveDate};
-use fltk::{app::*, button::*, dialog::*, input::*, misc::*, window::*};
+use fltk::{app::*, button::*, dialog::*, input::*, menu::*, window::*};
 
 const WIDGET_HEIGHT: i32 = 25;
 const WIDGET_PADDING: i32 = 10;
 const WIDGET_WIDTH: i32 = 200;
-
-const FLIGHT_ONE_WAY: &str = "one-way flight";
-const FLIGHT_RETURN: &str = "return flight";
 
 #[derive(Clone, Copy)]
 enum Message {
@@ -25,14 +22,13 @@ fn main() {
 
     let (sender, reciever) = channel::<Message>();
 
-    let mut choice = InputChoice::default()
+    let mut choice = Choice::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .with_pos(WIDGET_PADDING, WIDGET_PADDING);
-    choice.add(FLIGHT_ONE_WAY);
-    choice.add(FLIGHT_RETURN);
-    choice.set_value2(0);
-    choice.input().set_readonly(true);
-    choice.input().set_color(Color::BackGround);
+    choice.add_choice("one-way flight");
+    choice.add_choice("return flight");
+    let one_way_flight_index = 0;
+    choice.set_value(one_way_flight_index);
     choice.emit(sender, Message::Update);
 
     let current_date = Local::now().naive_local().date();
@@ -63,7 +59,7 @@ fn main() {
     while app.wait() {
         match reciever.recv() {
             Some(Message::Update) => {
-                if choice.value().unwrap().as_str() == FLIGHT_ONE_WAY {
+                if choice.value() == one_way_flight_index {
                     return_input.deactivate();
                     if get_date(&mut start_input).is_ok() {
                         book_button.activate();
@@ -84,21 +80,18 @@ fn main() {
                     }
                 }
             }
-            Some(Message::Book) => {
-                // TODO: Should it be impossible for InputChoice::value to return None?
-                alert_default(&if choice.value().unwrap().as_str() == FLIGHT_ONE_WAY {
-                    format!(
-                        "You have booked a one-way flight for {}.",
-                        start_input.value()
-                    )
-                } else {
-                    format!(
-                        "You have booked a return flight from {} to {}",
-                        start_input.value(),
-                        return_input.value()
-                    )
-                })
-            }
+            Some(Message::Book) => alert_default(&if choice.value() == one_way_flight_index {
+                format!(
+                    "You have booked a one-way flight for {}.",
+                    start_input.value()
+                )
+            } else {
+                format!(
+                    "You have booked a return flight from {} to {}",
+                    start_input.value(),
+                    return_input.value()
+                )
+            }),
             None => {}
         }
     }
