@@ -30,6 +30,11 @@ path = "src/crud.rs"
 name = "circles"
 path = "src/circles.rs"
 
+[[bin]]
+name = "cells"
+path = "src/cells.rs"
+
 [dependencies]
 fltk = "0.14.7"
 chrono = "0.4"
+nom = "6"
