@@ -308,7 +308,7 @@ impl SpreadsheetWidgetInner {
                     self.input.resize(x, y, width, height);
                     self.input.show();
                     self.input.set_value(&self.sheet.cell(coord).text);
-                    self.input.take_focus().ok();
+                    self.input.take_focus().expect("input refused focus");
                     self.input.redraw();
                 } else {
                     let color = if self.table.is_selected(row, col) {
