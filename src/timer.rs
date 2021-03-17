@@ -76,7 +76,6 @@ fn main() {
                 if duration_slider.value() - elapsed_progress.value() >= 0.01 {
                     elapsed_progress.set_value(elapsed_progress.value() + 0.1);
                     elapsed_frame.set_label(&format!("{:.1}s", elapsed_progress.value()));
-                    eprintln!("{}", elapsed_progress.value());
                 }
             }
             None => {}
