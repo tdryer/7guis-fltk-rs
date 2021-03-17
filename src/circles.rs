@@ -110,7 +110,7 @@ impl Canvas {
                 Event::Released if event_button() == MOUSE_RIGHT => {
                     let selected = *selected.borrow(); // Limit borrow lifetime.
                     if selected.is_some() {
-                        let mut menu = MenuItem::new(&["Adjust diameter..."]);
+                        let menu = MenuItem::new(&["Adjust diameter..."]);
                         if menu.popup(event_x(), event_y()).is_some() {
                             sender.send(Message::AdjustOpened);
                         }
