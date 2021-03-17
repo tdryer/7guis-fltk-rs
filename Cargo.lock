@@ -66,9 +66,9 @@ dependencies = [
 
 [[package]]
 name = "fltk"
-version = "0.14.7"
+version = "0.15.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "620bb91f79b0a9e7aacd0dc244c0dc022ce4ed96b6086d4fa8fa650bec336898"
+checksum = "6df0ed4e2246f8a71cf97e4b2811c71ffddac1956d8a912973666182ccc153a0"
 dependencies = [
  "bitflags",
  "fltk-derive",
@@ -80,9 +80,9 @@ dependencies = [
 
 [[package]]
 name = "fltk-derive"
-version = "0.14.6"
+version = "0.15.12"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ce8d87efad2418b531058ff33eb83e87ef878dc8c256a82f9508a51fdb9fb76b"
+checksum = "4565f526a57ba1089b1d508a611f1f6aa43e82abbf8cf6566b54d9a9982aec0e"
 dependencies = [
  "quote",
  "syn",
@@ -90,9 +90,9 @@ dependencies = [
 
 [[package]]
 name = "fltk-sys"
-version = "0.14.6"
+version = "0.15.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e53573e655a85d6593e16000b2d9571bd1e2960ca8e14e4867a09ad5d5894cee"
+checksum = "903cf29e388d39c406ee0ced931acea0543ba5eda2a49bf596dd0e6995638453"
 dependencies = [
  "cmake",
  "libc",
@@ -125,9 +125,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.85"
+version = "0.2.89"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7ccac4b00700875e6a07c6cde370d44d32fa01c5a65cdd2fca6858c479d28bb3"
+checksum = "538c092e5586f4cdd7dd8078c4a79220e3e168880218124dcbce860f0ea938c6"
 
 [[package]]
 name = "malloc_buf"
@@ -196,9 +196,9 @@ dependencies = [
 
 [[package]]
 name = "quote"
-version = "1.0.8"
+version = "1.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "991431c3519a3f36861882da93630ce66b52918dcf1b8e2fd66b397fc96f28df"
+checksum = "c3d0b9745dc2debf507c8422de05d7226cc1f0644216dfdfead988f9b1ab32a7"
 dependencies = [
  "proc-macro2",
 ]
@@ -241,9 +241,9 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
 name = "syn"
-version = "1.0.60"
+version = "1.0.64"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c700597eca8a5a762beb35753ef6b94df201c81cca676604f547495a0d7f0081"
+checksum = "3fd9d1e9976102a03c542daa2eff1b43f9d72306342f3f8b3ed5fb8908195d6f"
 dependencies = [
  "proc-macro2",
  "quote",
