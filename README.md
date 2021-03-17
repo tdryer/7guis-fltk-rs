@@ -11,8 +11,10 @@ This is an implementation of [the 7GUIs tasks][0] written in [Rust][1] with
 ## counter
 
 ```
-cargo run --bin cells
+cargo run --bin counter
 ```
+
+![counter screenshot](screenshots/counter.png)
 
 ## temperature
 
@@ -20,11 +22,15 @@ cargo run --bin cells
 cargo run --bin temperature
 ```
 
+![temperature screenshot](screenshots/temperature.png)
+
 ## flightbooker
 
 ```
 cargo run --bin flightbooker
 ```
+
+![flightbooker screenshot](screenshots/flightbooker.png)
 
 ## timer
 
@@ -32,11 +38,15 @@ cargo run --bin flightbooker
 cargo run --bin timer
 ```
 
+![timer screenshot](screenshots/timer.png)
+
 ## crud
 
 ```
 cargo run --bin crud
 ```
+
+![crud screenshot](screenshots/crud.png)
 
 ## circles
 
@@ -44,9 +54,12 @@ cargo run --bin crud
 cargo run --bin circles
 ```
 
+![circles screenshot](screenshots/circles.png)
+
 ## cells
 
 ```
 cargo run --bin cells
 ```
 
+![cells screenshot](screenshots/cells.png)
