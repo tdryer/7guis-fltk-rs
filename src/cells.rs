@@ -1,4 +1,4 @@
-use fltk::{app::*, browser::*, draw::*, input::*, table::*, window::*};
+use fltk::{app::*, draw::*, enums::*, input::*, prelude::*, table::*, window::*};
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::character::complete::{alpha1, digit1, multispace0, not_line_ending};
@@ -359,22 +359,21 @@ impl SpreadsheetWidget {
         }));
 
         let inner_clone = inner.clone();
-        inner.borrow_mut().input.set_callback(move || {
+        inner.borrow_mut().input.set_callback(move |_| {
             inner_clone.borrow_mut().finish_editing();
         });
 
         let inner_clone = inner.clone();
-        inner
-            .borrow_mut()
-            .table
-            .draw_cell(move |table_context, row, col, x, y, width, height| {
+        inner.borrow_mut().table.draw_cell(
+            move |_, table_context, row, col, x, y, width, height| {
                 inner_clone
                     .borrow_mut()
                     .draw_cell(table_context, row, col, x, y, width, height);
-            });
+            },
+        );
 
         let inner_clone = inner.clone();
-        inner.borrow_mut().table.handle2(move |widget, event| {
+        inner.borrow_mut().table.handle(move |widget, event| {
             if event == Event::Push && widget.callback_context() == TableContext::Cell {
                 inner_clone.borrow_mut().finish_editing();
                 if event_clicks() {

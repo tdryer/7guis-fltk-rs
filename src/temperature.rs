@@ -1,4 +1,4 @@
-use fltk::{app::*, button::*, frame::*, input::*, window::*};
+use fltk::{app::*, enums::*, frame::*, input::*, prelude::*, window::*};
 
 const WIDGET_HEIGHT: i32 = 25;
 const WIDGET_PADDING: i32 = 10;

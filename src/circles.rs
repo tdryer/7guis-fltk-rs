@@ -1,4 +1,6 @@
-use fltk::{app::*, browser::*, button::*, draw::*, menu::*, valuator::*, widget::*, window::*};
+use fltk::{
+    app::*, button::*, draw::*, enums::*, menu::*, prelude::*, valuator::*, widget::*, window::*,
+};
 use std::cell::RefCell;
 use std::collections::HashMap;
 use std::ops::{Deref, DerefMut};
@@ -84,7 +86,7 @@ impl Canvas {
 
         let circles = canvas.circles.clone();
         let selected = canvas.selected.clone();
-        canvas.widget.handle2(move |widget, event| {
+        canvas.widget.handle(move |widget, event| {
             let event_pos = (event_x() - widget.x(), event_y() - widget.y());
             match event {
                 Event::Enter => true,
@@ -123,7 +125,7 @@ impl Canvas {
 
         let circles = canvas.circles.clone();
         let selected = canvas.selected.clone();
-        canvas.widget.draw2(move |wid| {
+        canvas.widget.draw(move |wid| {
             push_clip(wid.x(), wid.y(), wid.width(), wid.height());
             draw_rect_fill(wid.x(), wid.y(), wid.width(), wid.height(), Color::White);
             for (pos, radius) in &*circles.borrow() {

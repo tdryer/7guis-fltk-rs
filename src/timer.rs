@@ -1,4 +1,4 @@
-use fltk::{app::*, button::*, frame::*, misc::*, valuator::*, window::*};
+use fltk::{app::*, button::*, enums::*, frame::*, misc::*, prelude::*, valuator::*, window::*};
 use std::thread;
 use std::time::Duration;
 

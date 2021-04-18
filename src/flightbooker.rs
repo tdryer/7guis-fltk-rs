@@ -1,5 +1,5 @@
 use chrono::{offset::Local, NaiveDate};
-use fltk::{app::*, button::*, dialog::*, input::*, menu::*, window::*};
+use fltk::{app::*, button::*, dialog::*, enums::*, input::*, menu::*, prelude::*, window::*};
 
 const WIDGET_HEIGHT: i32 = 25;
 const WIDGET_PADDING: i32 = 10;

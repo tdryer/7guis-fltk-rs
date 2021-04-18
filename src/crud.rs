@@ -1,4 +1,4 @@
-use fltk::{app::*, browser::*, button::*, input::*, window::*};
+use fltk::{app::*, browser::*, button::*, enums::*, input::*, prelude::*, window::*};
 
 const WIDGET_WIDTH: i32 = 70;
 const WIDGET_HEIGHT: i32 = 25;

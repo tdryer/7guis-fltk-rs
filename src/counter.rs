@@ -1,4 +1,4 @@
-use fltk::{app::*, button::*, output::*, window::*};
+use fltk::{app::*, button::*, output::*, prelude::*, window::*};
 
 const WIDGET_HEIGHT: i32 = 25;
 const WIDGET_PADDING: i32 = 10;
@@ -23,7 +23,7 @@ fn main() {
         .right_of(&output, WIDGET_PADDING)
         .with_label("Count");
     let mut value = 0;
-    button.set_callback(move || {
+    button.set_callback(move |_| {
         value += 1;
         output.set_value(&format!("{}", value));
     });
