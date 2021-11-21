@@ -13,7 +13,7 @@ fn main() {
         )
         .with_label("Counter");
 
-    let output = Output::default()
+    let mut output = Output::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
         .with_pos(WIDGET_PADDING, WIDGET_PADDING);
     output.set_value("0");

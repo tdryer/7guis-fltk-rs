@@ -37,4 +37,4 @@ path = "src/cells.rs"
 [dependencies]
 fltk = "1"
 chrono = "0.4"
-nom = "6"
+nom = "7"
