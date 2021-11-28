@@ -183,7 +183,7 @@ fn main() {
     let app = App::default().with_scheme(Scheme::Gtk);
     let mut wind = Window::default().with_label("CircleDraw");
 
-    let (sender, reciever) = channel::<Message>();
+    let (sender, receiver) = channel::<Message>();
 
     let mut model = Model::new(sender);
 
@@ -237,7 +237,7 @@ fn main() {
     wind.show();
     sender.send(Message::ModelChanged);
     while app.wait() {
-        match reciever.recv() {
+        match receiver.recv() {
             Some(Message::Undo) => model.undo(),
             Some(Message::Redo) => model.redo(),
             Some(Message::Add(pos)) => {

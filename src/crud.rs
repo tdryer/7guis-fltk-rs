@@ -17,7 +17,7 @@ fn main() {
     let app = App::default().with_scheme(Scheme::Gtk);
     let mut wind = Window::default().with_label("CRUD");
 
-    let (sender, reciever) = channel::<Message>();
+    let (sender, receiver) = channel::<Message>();
 
     let mut filter_input = Input::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
@@ -86,7 +86,7 @@ fn main() {
     wind.end();
     wind.show();
     while app.wait() {
-        match reciever.recv() {
+        match receiver.recv() {
             Some(Message::Create) => {
                 model.push(formatted_name());
                 sender.send(Message::Filter);
