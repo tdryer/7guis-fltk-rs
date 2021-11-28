@@ -20,7 +20,7 @@ fn main() {
         )
         .with_label("Book Flight");
 
-    let (sender, reciever) = channel::<Message>();
+    let (sender, receiver) = channel::<Message>();
 
     let mut choice = Choice::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
@@ -57,7 +57,7 @@ fn main() {
     wind.end();
     wind.show();
     while app.wait() {
-        match reciever.recv() {
+        match receiver.recv() {
             Some(Message::Update) => {
                 if choice.value() == one_way_flight_index {
                     return_input.deactivate();

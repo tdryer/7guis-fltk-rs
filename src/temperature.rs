@@ -19,7 +19,7 @@ fn main() {
         )
         .with_label("TempConv");
 
-    let (sender, reciever) = channel::<Message>();
+    let (sender, receiver) = channel::<Message>();
 
     let mut celsius_input = Input::default()
         .with_size(WIDGET_WIDTH, WIDGET_HEIGHT)
@@ -46,7 +46,7 @@ fn main() {
     wind.end();
     wind.show();
     while app.wait() {
-        match reciever.recv() {
+        match receiver.recv() {
             Some(Message::CelsiusChanged) => {
                 if let Ok(celsius) = celsius_input.value().parse::<i32>() {
                     let value = f64::from(celsius) * (9.0 / 5.0) + 32.0;

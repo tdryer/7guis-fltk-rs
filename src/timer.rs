@@ -26,7 +26,7 @@ fn main() {
         )
         .with_label("Timer");
 
-    let (sender, reciever) = channel::<Message>();
+    let (sender, receiver) = channel::<Message>();
 
     thread::spawn(move || loop {
         thread::sleep(Duration::from_millis(100));
@@ -65,7 +65,7 @@ fn main() {
     wind.end();
     wind.show();
     while app.wait() {
-        match reciever.recv() {
+        match receiver.recv() {
             Some(Message::Reset) => {
                 elapsed_progress.set_value(0.0);
             }
