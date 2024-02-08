@@ -9,7 +9,7 @@ See [the fltk-rs README][4] for additional dependencies.
 [1]: https://www.rust-lang.org/
 [2]: https://github.com/MoAlyousef/fltk-rs
 [3]: https://www.fltk.org/
-[4]: https://github.com/fltk-rs/fltk-rs/blob/master/README.md#dependencies
+[4]: https://github.com/fltk-rs/fltk-rs/blob/master/README.md#build-dependencies
 
 ## counter
 
