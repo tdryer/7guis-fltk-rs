@@ -72,7 +72,7 @@ impl Model {
 struct Canvas {
     widget: Widget,
     circles: Rc<RefCell<HashMap<Coord, Radius>>>,
-    selected: Rc<RefCell<Option<(Coord, Radius)>>>,
+    selected: Rc<RefCell<std::option::Option<(Coord, Radius)>>>,
 }
 
 impl Canvas {
@@ -150,7 +150,7 @@ impl Canvas {
         self.circles.replace(circles.clone());
         self.redraw();
     }
-    fn selected(&self) -> Option<(Coord, Radius)> {
+    fn selected(&self) -> std::option::Option<(Coord, Radius)> {
         *self.selected.borrow()
     }
 }

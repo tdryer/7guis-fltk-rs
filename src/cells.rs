@@ -246,7 +246,7 @@ struct SpreadsheetWidgetInner {
     table: Table,
     input: Input,
     sheet: Spreadsheet,
-    edit_cell: Option<Coord>,
+    edit_cell: std::option::Option<Coord>,
 }
 
 impl SpreadsheetWidgetInner {
