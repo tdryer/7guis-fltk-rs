@@ -28,9 +28,11 @@ fn main() {
 
     let (sender, receiver) = channel::<Message>();
 
-    thread::spawn(move || loop {
-        thread::sleep(Duration::from_millis(100));
-        sender.send(Message::Tick);
+    thread::spawn(move || {
+        loop {
+            thread::sleep(Duration::from_millis(100));
+            sender.send(Message::Tick);
+        }
     });
 
     let mut elapsed_progress = Progress::default()

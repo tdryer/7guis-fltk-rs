@@ -1,4 +1,4 @@
-use chrono::{offset::Local, NaiveDate};
+use chrono::{NaiveDate, offset::Local};
 use fltk::{app::*, button::*, dialog::*, enums::*, input::*, menu::*, prelude::*, window::*};
 
 const WIDGET_HEIGHT: i32 = 25;
