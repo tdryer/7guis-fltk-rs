@@ -1,11 +1,12 @@
 use fltk::{app::*, draw::*, enums::*, input::*, prelude::*, table::*, window::*};
+use nom::Parser;
 use nom::branch::alt;
 use nom::bytes::complete::tag;
 use nom::character::complete::{alpha1, digit1, multispace0, not_line_ending};
 use nom::combinator::{all_consuming, cut, eof, map, verify};
 use nom::multi::separated_list1;
 use nom::number::complete::float;
-use nom::sequence::{delimited, pair, preceded, separated_pair, terminated, tuple};
+use nom::sequence::{delimited, pair, preceded, separated_pair, terminated};
 use std::borrow::Cow;
 use std::cell::RefCell;
 use std::char;
@@ -52,7 +53,9 @@ impl Coord {
             usize::from_str_radix(s, 36).unwrap() - usize::from_str_radix("A", 36).unwrap()
         });
         let num = verify(map(digit1, |s| usize::from_str(s).unwrap()), |num| *num > 0);
-        map(tuple((alpha, num)), |(col, row)| Self::new(row - 1, col))(input)
+        (alpha, num)
+            .map(|(col, row)| Self::new(row - 1, col))
+            .parse(input)
     }
 }
 
@@ -78,7 +81,8 @@ impl Formula {
             map(all_consuming(not_line_ending), |s: &str| {
                 Formula::Label(s.to_string())
             }),
-        ))(input)
+        ))
+        .parse(input)
     }
     fn parse_expr(input: &str) -> nom::IResult<&str, Formula> {
         alt((
@@ -105,7 +109,8 @@ impl Formula {
                 ),
                 |(name, args)| Formula::Application(name.to_string(), args),
             ),
-        ))(input)
+        ))
+        .parse(input)
     }
     fn references(&self) -> Vec<Coord> {
         match self {

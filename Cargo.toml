@@ -39,4 +39,4 @@ path = "src/cells.rs"
 # (709e897c is the first bad commit)
 fltk = {version = "<1.5.14", features = []}
 chrono = "0.4"
-nom = "7"
+nom = "8"
