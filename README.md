@@ -1,11 +1,11 @@
 # 7guis-fltk-rs
 
-This is an implementation of [the 7GUIs tasks][0] written in [Rust][1] with
-[fltk-rs][2] (bindings to [FLTK][3]).
+This is an implementation of [the 7GUIs GUI programming benchmark][0] with
+[fltk-rs][2] ([Rust][1] bindings to [FLTK][3]).
 
 See [the fltk-rs README][4] for additional dependencies.
 
-[0]: https://eugenkiss.github.io/7guis/
+[0]: https://7guis.github.io/7guis/
 [1]: https://www.rust-lang.org/
 [2]: https://github.com/MoAlyousef/fltk-rs
 [3]: https://www.fltk.org/
