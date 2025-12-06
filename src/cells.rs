@@ -256,7 +256,11 @@ struct SpreadsheetWidgetInner {
 
 impl SpreadsheetWidgetInner {
     fn start_editing(&mut self, row: i32, col: i32) {
-        self.edit_cell = Some(Coord::new(row.try_into().unwrap(), col.try_into().unwrap()));
+        let coord = Coord::new(row.try_into().unwrap(), col.try_into().unwrap());
+        self.edit_cell = Some(coord);
+        self.input.show();
+        self.input.set_value(&self.sheet.cell(coord).text);
+        self.input.take_focus().expect("input refused focus");
     }
     fn finish_editing(&mut self) {
         if let Some(edit_cell) = self.edit_cell {
@@ -311,9 +315,6 @@ impl SpreadsheetWidgetInner {
                 let coord = Coord::new(row.try_into().unwrap(), col.try_into().unwrap());
                 if self.edit_cell == Some(coord) {
                     self.input.resize(x, y, width, height);
-                    self.input.show();
-                    self.input.set_value(&self.sheet.cell(coord).text);
-                    self.input.take_focus().expect("input refused focus");
                     self.input.redraw();
                 } else {
                     let color = if self.table.is_selected(row, col) {

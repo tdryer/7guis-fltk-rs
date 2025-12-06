@@ -102,23 +102,23 @@ checksum = "3a3076410a55c90011c298b04d0cfa770b00fa04e1e3c97d3f6c9de105a03844"
 
 [[package]]
 name = "fltk"
-version = "1.5.13"
+version = "1.5.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f82b261df9955a49a90f00b22f6b8752fe98f2fcd1b5f82aed02ea604e00ec8e"
+checksum = "6ef591509a695d1f6ae5a1ff2b50bf98fb96a82c2d1f2a97b9103b762583c915"
 dependencies = [
  "bitflags",
  "crossbeam-channel",
  "fltk-sys",
+ "minipaste",
  "once_cell",
- "paste",
  "ttf-parser",
 ]
 
 [[package]]
 name = "fltk-sys"
-version = "1.5.10"
+version = "1.5.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fdfd7cdacacea6074214cbb2309ca8fa114d4c8b9bb96f2fa50bf675d6de7dbd"
+checksum = "0d09bcc449403e8ef87799dc5c5a1e31469ad5affd1bcaaca3a15810aae4ff6f"
 dependencies = [
  "cmake",
  "cmk",
@@ -160,21 +160,30 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.177"
+version = "0.2.178"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2874a2af47a2325c2001a6e6fad9b16a53b802102b528163885171cf92b15976"
+checksum = "37c93d8daa9d8a012fd8ab92f088405fb202ea0b6ab73ee2482ae66af4f42091"
 
 [[package]]
 name = "log"
-version = "0.4.28"
+version = "0.4.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "34080505efa8e45a4b816c349525ebe327ceaa8559756f0356cba97ef3bf7432"
+checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
 name = "memchr"
 version = "2.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f52b00d39961fc5b2736ea853c9cc86238e165017a493d1d5c8eac6bdc4cc273"
+
+[[package]]
+name = "minipaste"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1bbcafc6544efab7decec8e8e63d6e7cbaac0a699a4adead308a80f9c302d6ae"
+dependencies = [
+ "proc-macro2",
+]
 
 [[package]]
 name = "nom"
@@ -199,12 +208,6 @@ name = "once_cell"
 version = "1.21.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d"
-
-[[package]]
-name = "paste"
-version = "1.0.15"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
 
 [[package]]
 name = "proc-macro2"

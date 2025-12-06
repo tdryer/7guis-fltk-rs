@@ -35,8 +35,6 @@ name = "cells"
 path = "src/cells.rs"
 
 [dependencies]
-# TODO: Figure out why the input in `cells` stopped working in 1.5.14
-# (709e897c is the first bad commit)
-fltk = {version = "<1.5.14", features = []}
+fltk = {version = "1", features = []}
 chrono = "0.4"
 nom = "8"
